@@ -1,63 +1,116 @@
-# Keylock.py
+# Keylock
 
-## Introduction and Purpose
+## 1. Introduction and Purpose
 
-**Keylock.py** is a lightweight utility designed to lock and secure your keyboard, providing a quick way to prevent unwanted input. Whether you need to step away from your computer or want to prevent accidental keypresses during presentations or media playback, this tool offers a convenient solution. It also features a quick escape mechanism: pressing the spacebar five times rapidly will unlock the keyboard and terminate the program.
+**Keylock** is a Windows-only utility that **temporarily disables all keyboard input** by locking the keyboard. The program remains active until the user performs a specific unlock gesture: pressing the spacebar five times in rapid succession (within one second). Once this condition is met, the program terminates itself and forcibly closes related processes.
 
-This utility is especially useful for:
-- Preventing unauthorized or accidental use of your computer.
-- Pausing input while displaying content on screen.
-- Temporarily disabling the keyboard in shared environments.
+### Purpose & Problem Statement
 
-## Getting Started
+This script addresses the need for **temporarily disabling keyboard input** for privacy, focus, or security purposes. It can be particularly useful in situations where input should be disabled temporarily — for example, during a presentation, when leaving a workstation unattended briefly, or to prevent unintended key presses during critical processes.
 
-### Downloading the Program
+### Value Proposition
 
-1. Navigate to the repository page and click the green **Code** button.
-2. Select **Download ZIP** from the dropdown menu.
-3. Save the ZIP file to your desired location on your computer.
-
-### Setting Up the Program
-
-1. **Extract the ZIP file:**
-   - Right-click the downloaded ZIP file and select **Extract All** (Windows).
-   - Choose a folder where you want to extract the files and click **Extract**.
-
-2. **Run the Program:**
-   - Open the extracted folder and locate the `keylock.py` file.
-   - Double-click on `keylock.py` to run the program.
-
-> **Note:** This program requires administrator privileges to function. When prompted, grant the required permissions to continue.
-
-### Prerequisites
-
-- This program is designed to run on **Windows**.
-- Ensure Python 3.x is installed on your computer.
-  - If Python is not installed, download it from the [Python website](https://www.python.org/) and follow the installation instructions.
-
-## Use Cases and Examples
-
-### Scenario 1: Securing Your Workstation
-When stepping away from your computer, running **Keylock.py** locks the keyboard, ensuring no accidental or unauthorized input occurs.
-
-- **Example:** You’re working in an open-plan office and need to step out for a coffee break. Running this script secures your computer by locking the keyboard.
-
-### Scenario 2: Disabling Keyboard Input During a Presentation
-Prevent interruptions during a presentation by locking the keyboard. The program allows you to maintain focus without worrying about accidental keypresses.
-
-- **Example:** You’re displaying a video or slides and want to ensure no one accidentally disrupts the presentation by typing.
-
-### Scenario 3: Quick Exit
-To terminate the program, press the spacebar five times rapidly. This will immediately unlock the keyboard, close any windows opened by the script, and end the process.
-
-- **Example:** You’ve locked the keyboard but now need to regain control. Use the quick escape mechanism to terminate the script and unlock the keyboard.
-
-## Disclaimers and Updates
-
-- **Program Updates:** This repository may be updated at any time. Updates could introduce new features, fix bugs, or modify existing functionality. Users should regularly check for new versions.
-- **README Accuracy:** Changes to the codebase may render this README outdated. Users should refer to the latest version of the code for accurate information.
-- **Responsibility Disclaimer:** This program is provided "as is," and its functionality depends on the user's system configuration. It is recommended to use this program responsibly and in appropriate contexts.
+- Simple activation: just run the script.
+- Quick emergency unlock: press the spacebar five times quickly.
+- No complex setup or configuration.
+- Useful for parental control, kiosk environments, or secure workstations.
 
 ---
 
-Enjoy using **Keylock.py** as a handy utility for locking and securing your keyboard!
+## 2. Dependencies (Required Software/Libraries)
+
+This script requires the following external components:
+
+### ✅ Python 3.x
+- **Description:** The primary runtime environment required to execute the script.
+- **Install:** [https://www.python.org/downloads](https://www.python.org/downloads)
+
+### ✅ `pynput` Library
+- **Description:** Enables the script to listen for keyboard inputs in the background.
+- **Install Command:**
+  ```bash
+  pip install pynput
+  ```
+
+> ⚠️ **Note:** This script is **designed exclusively for Windows operating systems** due to its use of Windows-specific libraries like `ctypes.windll`.
+
+---
+
+## 3. Getting Started (Installation & Execution)
+
+### Step-by-Step Instructions:
+
+#### 1. Download the Repository
+- Click the green "**<> Code**" button on the repository page.
+- Select "**Download ZIP**".
+- Extract the ZIP file to a location of your choice.
+
+#### 2. Install Required Library
+Open a terminal (Command Prompt) and run:
+```bash
+pip install pynput
+```
+
+#### 3. Run the Script
+1. Press `Windows + R`, type `cmd`, and hit Enter to open the Command Prompt.
+2. Navigate to the extracted folder using the `cd` command. For example:
+   ```bash
+   cd C:\Users\YourName\Downloads\keylock-main
+   ```
+3. Run the script using:
+   ```bash
+   python keylock.py
+   ```
+
+> 🔐 You will be prompted for **administrator permissions**, which are required to lock keyboard input.
+
+---
+
+## 4. User Guide (How to Effectively Use the Program)
+
+### 🟢 Starting the Program
+- Once launched, the script immediately locks the keyboard.
+- You will see a message:  
+  _“Press the spacebar 5 times rapidly to terminate the script and close all windows.”_
+
+### 🔴 Unlocking the Keyboard / Stopping the Program
+- Press the **spacebar 5 times within 1 second**.
+- The script will:
+  - Unlock the keyboard.
+  - Terminate itself.
+  - Attempt to close the terminal window and associated Python processes.
+
+### 🛠 Configuration or Settings
+- No configuration is needed.
+- Behavior is fixed and hard-coded:
+  - Unlock combo: 5 spacebar presses within 1 second.
+  - Only works on Windows systems with administrator rights.
+
+---
+
+## 5. Use Cases and Real-World Examples
+
+### ✅ Use Case 1: Parental Control
+**Scenario:** A parent wants to temporarily disable keyboard input while their child is watching a video on the computer.  
+**Action:** The parent runs the script to lock the keyboard.  
+**Result:** The child cannot press any keys until the parent unlocks it with the spacebar combo.
+
+### ✅ Use Case 2: Kiosk Mode Security
+**Scenario:** A kiosk terminal must prevent users from pressing keys except via touchscreen.  
+**Action:** The admin runs the script in the background on Windows.  
+**Result:** The keyboard is disabled, improving kiosk security.
+
+### ✅ Use Case 3: Focus Aid During Presentations
+**Scenario:** A presenter wants to prevent accidental key presses while demonstrating something on screen.  
+**Action:** Before beginning, the presenter runs the script.  
+**Result:** Keyboard is locked, ensuring focus remains on content until unlocked manually.
+
+---
+
+## 6. Disclaimer & Important Notices
+
+- This repository and its contents may be updated at any time without notice.
+- Such updates may render parts of this README obsolete.
+- No commitment is made to maintain or update this README to reflect future changes.
+- The provided code is delivered **"as-is"**, with **no guarantees**—explicit or implied—regarding functionality, reliability, compatibility, or correctness.
+- **Use at your own risk.**
